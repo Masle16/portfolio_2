@@ -5,12 +5,11 @@
 
 using namespace std;
 
-class priority_queue
+class Priority_Queue
 {
 public:
-    priority_queue();
-    priority_queue(vector<int> v);
-    ~priority_queue();
+    Priority_Queue();
+    Priority_Queue(vector<int> v);
 
     void print_queue();
     int delete_min();

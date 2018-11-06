@@ -1,24 +1,22 @@
-#include "priority_queue.h"
+#include "Priority_Queue.h"
 
-priority_queue::priority_queue() { }
+Priority_Queue::Priority_Queue() { }
 
-priority_queue::priority_queue(vector<int> v) {
+Priority_Queue::Priority_Queue(vector<int> v) {
     for (unsigned i = 0; i < v.size(); i++) {
         p_queue.push_back(v[i]);
     }
     build_heap();
 }
 
-priority_queue::~priority_queue() { }
-
-void priority_queue::print_queue() {
+void Priority_Queue::print_queue() {
     for (unsigned i = 1; i < p_queue.size(); i++) {
         cout << p_queue[i] << " ";
     }
     cout << endl;
 }
 
-int priority_queue::delete_min() {
+int Priority_Queue::delete_min() {
     int result = p_queue[1];
     p_queue[1] = p_queue[ p_queue.size()-1 ];
     percolate_down(1);
@@ -26,13 +24,13 @@ int priority_queue::delete_min() {
     return result;
 }
 
-void priority_queue::build_heap() {
+void Priority_Queue::build_heap() {
     for (unsigned i = (p_queue.size()-1)/2; i > 0 ; i--) {
         percolate_down(i);
     }
 }
 
-void priority_queue::percolate_down(int node) {
+void Priority_Queue::percolate_down(int node) {
     int child;
     int temp = p_queue[node];
 

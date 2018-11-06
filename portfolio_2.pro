@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    priority_queue.cpp
+    Quick_Select.cpp \
+    Priority_Queue.cpp
 
 HEADERS += \
-    priority_queue.h
+    Quick_Select.h \
+    Priority_Queue.h
