@@ -257,7 +257,6 @@ int main() {
         quick_s << times_quick_select[i] << " ";
     }
     quick_s << "\n";
-    quick_s.close();
     times_priority_q.clear();
     times_quick_select.clear();
     cout << endl;
