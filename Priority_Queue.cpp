@@ -35,10 +35,10 @@ void Priority_Queue::percolate_down(int node) {
     int temp = p_queue[node];
 
     for ( ; node * 2 <= (int)p_queue.size()-1; node = child) {
-        child = node * 2;
+        child = node * 2;   // Left child first
 
-        if ( ( child!=(int)p_queue.size() ) && ( p_queue[child+1]<p_queue[child] ) ) {
-            ++child;
+        if ( ( child!=(int)p_queue.size()-1 ) && ( p_queue[child+1]<p_queue[child] ) ) {
+            ++child;    // Go to right child
         }
 
         if ( p_queue[child] < temp ) {

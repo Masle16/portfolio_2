@@ -17,7 +17,6 @@ void Quick_Select::print() {
 }
 
 // PRIVATE
-
 void Quick_Select::quick_select(vector<int> &v, int left, int right, int k) {
     if (left + 10 <= right ) {
         int pivot = median3(v);
