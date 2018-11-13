@@ -9,6 +9,8 @@ Quick_Select::Quick_Select(vector<int> v, int k) {
     quick_select(table, 0, table.size()-1, k);
 }
 
+Quick_Select::~Quick_Select() { }
+
 void Quick_Select::print() {
     for (unsigned i = 0; i < table.size(); i++) {
         cout << table[i] << " ";

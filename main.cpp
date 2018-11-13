@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
+#include <time.h>
+#include <fstream>
 
 #include "Priority_Queue.h"
 #include "Quick_Select.h"
@@ -17,43 +19,175 @@ vector<int> random_list( int length ) {
 }
 
 int main() {
-//    cout << "TEST 1" << endl;
-//    vector<int> list1 = { 150, 80, 40, 30, 10, 70, 110, 100, 20, 90, 60, 50, 120, 140, 130 };
-//    cout << "List: ";
-//    for (unsigned i = 0; i < list1.size(); i++) {
-//        cout << list1[i] << " ";
-//    }
-//    cout << endl; cout << endl;
-//    cout << "Priority queue" << endl;
-//    Priority_Queue q1(list1);
-//    q1.print_queue();
-//    cout << "Smallest element: " << q1.delete_min() << endl;
-//    q1.print_queue();
-//    cout << endl;
+    clock_t begin, end;
+    double time_priority_q, time_quick_select;
+    ofstream priority_q, quick_s;
+    vector<double> times_priority_q, times_quick_select;
+    priority_q.open("priority_q.txt");
+    quick_s.open("quick_s.txt");
 
-//    cout << "Quick select" << endl;
-//    Quick_Select qs1(list1, 1);
-//    qs1.print();
-//    cout << endl;
+    cout << "/***********************************" << endl;
+    cout << "* TEST 1" << endl;
+    cout << "***********************************/" << endl;
 
-    cout << "TEST 2" << endl;
-    cout << "Generated random list" << endl;
-    vector<int> list2 = random_list( 10 );
+    vector<int> list = { 150, 80, 40, 30, 10, 70, 110, 100, 20, 90, 60, 50, 120, 140, 130 };
     cout << "List: ";
-    for (unsigned i = 0; i < list2.size(); i++) {
-        cout << list2[i] << " ";
+    for (unsigned i = 0; i < list.size(); i++) {
+        cout << list[i] << " ";
     }
     cout << endl; cout << endl;
     cout << "Priority queue" << endl;
-    Priority_Queue q2(list2);
-    q2.print_queue();
-    cout << "Smallest element: " << q2.delete_min() << endl;
-    q2.print_queue();
+    Priority_Queue *q = new Priority_Queue(list) ;
+    q->print_queue();
     cout << endl;
 
     cout << "Quick select" << endl;
-    Quick_Select qs2(list2, 1);
-    qs2.print();
+    Quick_Select *qs = new Quick_Select(list, 1);
+    qs->print();
+    cout << endl;
+    list.clear();
+    delete q;
+    delete qs;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 2" << endl;
+    cout << "***********************************/" << endl;
+    cout << "Generated random list" << endl;
+    list = random_list( 25 );
+    cout << "List: ";
+    for (unsigned i = 0; i < list.size(); i++) {
+        cout << list[i] << " ";
+    }
+    cout << endl; cout << endl;
+    cout << "Priority queue" << endl;
+    q = new Priority_Queue(list);
+    q->print_queue();
+    cout << endl;
+    cout << "Quick select" << endl;
+    qs = new Quick_Select(list, 1);
+    qs->print();
+    cout << endl;
+    list.clear();
+    delete q;
+    delete qs;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 3" << endl;
+    cout << "* The test is done 100 times." << endl;
+    cout << "***********************************/" << endl;
+    list = random_list( 100 );
+    cout << "Number of elements: " << list.size() << endl;
+    for (int i = 0; i < 10; i++) {
+        begin = clock();
+        q = new Priority_Queue(list);
+        end = clock();
+        time_priority_q = double( end-begin ) / CLOCKS_PER_SEC;
+        times_priority_q.push_back( time_priority_q );
+        begin = clock();
+        qs = new Quick_Select(list, 1);
+        end = clock();
+        time_quick_select = double( end-begin ) / CLOCKS_PER_SEC;
+        times_quick_select.push_back( time_quick_select );
+        delete q;
+        delete qs;
+    }
+    list.clear();
+    cout << "Priority Queue times: ";
+    for (unsigned i = 0; i < times_priority_q.size(); i++) {
+        cout << times_priority_q[i] << " ";
+        priority_q << times_priority_q[i] << " ";
+    }
+    priority_q << "\n";
+    cout << endl;
+    cout << "Quick Select times: ";
+    for (unsigned i = 0; i < times_quick_select.size(); i++) {
+        cout << times_quick_select[i] << " ";
+        quick_s << times_quick_select[i] << " ";
+    }
+    quick_s << "\n";
+    times_priority_q.clear();
+    times_quick_select.clear();
+    cout << endl;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 4" << endl;
+    cout << "* Random list with 1000 elements." << endl;
+    cout << "* The test is done 10 times." << endl;
+    cout << "***********************************/" << endl;
+    list = random_list( 1000 );
+    for (int i = 0; i < 10; i++) {
+        begin = clock();
+        q = new Priority_Queue(list);
+        end = clock();
+        time_priority_q = double( end-begin ) / CLOCKS_PER_SEC;
+        times_priority_q.push_back( time_priority_q );
+        begin = clock();
+        qs = new Quick_Select(list, 1);
+        end = clock();
+        time_quick_select = double( end-begin ) / CLOCKS_PER_SEC;
+        times_quick_select.push_back( time_quick_select );
+        delete q;
+        delete qs;
+    }
+    list.clear();
+    cout << "Priority Queue times: ";
+    for (unsigned i = 0; i < times_priority_q.size(); i++) {
+        cout << times_priority_q[i] << " ";
+        priority_q << times_priority_q[i] << " ";
+    }
+    priority_q << "\n";
+    cout << endl;
+    cout << "Quick Select times: ";
+    for (unsigned i = 0; i < times_quick_select.size(); i++) {
+        cout << times_quick_select[i] << " ";
+        quick_s << times_quick_select[i] << " ";
+    }
+    quick_s << "\n";
+    times_priority_q.clear();
+    times_quick_select.clear();
+    cout << endl;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 5" << endl;
+    cout << "* Random list with 10000 elements." << endl;
+    cout << "* The test is done 10 times." << endl;
+    cout << "***********************************/" << endl;
+    list = random_list( 10000 );
+    for (int i = 0; i < 10; i++) {
+        begin = clock();
+        q = new Priority_Queue(list);
+        end = clock();
+        time_priority_q = double( end-begin ) / CLOCKS_PER_SEC;
+        times_priority_q.push_back( time_priority_q );
+        begin = clock();
+        qs = new Quick_Select(list, 1);
+        end = clock();
+        time_quick_select = double( end-begin ) / CLOCKS_PER_SEC;
+        times_quick_select.push_back( time_quick_select );
+        delete q;
+        delete qs;
+    }
+    list.clear();
+    cout << "Priority Queue times: ";
+    for (unsigned i = 0; i < times_priority_q.size(); i++) {
+        cout << times_priority_q[i] << " ";
+        priority_q << times_priority_q[i] << " ";
+    }
+    priority_q << "\n";
+    cout << endl;
+    cout << "Quick Select times: ";
+    for (unsigned i = 0; i < times_quick_select.size(); i++) {
+        cout << times_quick_select[i] << " ";
+        quick_s << times_quick_select[i] << " ";
+    }
+    quick_s << "\n";
+    quick_s.close();
+    times_priority_q.clear();
+    times_quick_select.clear();
+    cout << endl;
+
+    priority_q.close();
+    quick_s.close();
 
     return 0;
 }

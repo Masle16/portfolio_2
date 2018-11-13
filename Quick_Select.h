@@ -11,6 +11,7 @@ class Quick_Select
 public:
     Quick_Select();
     Quick_Select(vector<int> v, int k);
+    ~Quick_Select();
 
     void print();
 

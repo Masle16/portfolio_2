@@ -10,6 +10,7 @@ class Priority_Queue
 public:
     Priority_Queue();
     Priority_Queue(vector<int> v);
+    ~Priority_Queue();
 
     void print_queue();
     int delete_min();

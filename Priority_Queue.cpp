@@ -9,6 +9,8 @@ Priority_Queue::Priority_Queue(vector<int> v) {
     build_heap();
 }
 
+Priority_Queue::~Priority_Queue() { }
+
 void Priority_Queue::print_queue() {
     for (unsigned i = 1; i < p_queue.size(); i++) {
         cout << p_queue[i] << " ";
