@@ -7,13 +7,14 @@ Priority_Queue::Priority_Queue(vector<int> v) {
         p_queue.push_back(v[i]);
     }
     build_heap();
+    make_list();
 }
 
 Priority_Queue::~Priority_Queue() { }
 
 void Priority_Queue::print_queue() {
-    for (unsigned i = 1; i < p_queue.size(); i++) {
-        cout << p_queue[i] << " ";
+    for (unsigned i = 0; i < list.size(); i++) {
+        cout << list[i] << " ";
     }
     cout << endl;
 }
@@ -52,4 +53,10 @@ void Priority_Queue::percolate_down(int node) {
     }
 
     p_queue[node] = temp;
+}
+
+void Priority_Queue::make_list() {
+    while ( p_queue.size() > 1 ) {
+        list.push_back( delete_min() );
+    }
 }

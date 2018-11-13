@@ -73,9 +73,9 @@ int main() {
 
     cout << "/***********************************" << endl;
     cout << "* TEST 3" << endl;
-    cout << "* The test is done 100 times." << endl;
+    cout << "* The test is done 1000 times." << endl;
     cout << "***********************************/" << endl;
-    list = random_list( 100 );
+    list = random_list( 1000 );
     cout << "Number of elements: " << list.size() << endl;
     for (int i = 0; i < 10; i++) {
         begin = clock();
@@ -111,10 +111,10 @@ int main() {
 
     cout << "/***********************************" << endl;
     cout << "* TEST 4" << endl;
-    cout << "* Random list with 1000 elements." << endl;
-    cout << "* The test is done 10 times." << endl;
+    cout << "* The test is done 2500 times." << endl;
     cout << "***********************************/" << endl;
-    list = random_list( 1000 );
+    list = random_list( 2500 );
+    cout << "Number of elements: " << list.size() << endl;
     for (int i = 0; i < 10; i++) {
         begin = clock();
         q = new Priority_Queue(list);
@@ -149,6 +149,82 @@ int main() {
 
     cout << "/***********************************" << endl;
     cout << "* TEST 5" << endl;
+    cout << "* Random list with 5000 elements." << endl;
+    cout << "* The test is done 10 times." << endl;
+    cout << "***********************************/" << endl;
+    list = random_list( 5000 );
+    for (int i = 0; i < 10; i++) {
+        begin = clock();
+        q = new Priority_Queue(list);
+        end = clock();
+        time_priority_q = double( end-begin ) / CLOCKS_PER_SEC;
+        times_priority_q.push_back( time_priority_q );
+        begin = clock();
+        qs = new Quick_Select(list, 1);
+        end = clock();
+        time_quick_select = double( end-begin ) / CLOCKS_PER_SEC;
+        times_quick_select.push_back( time_quick_select );
+        delete q;
+        delete qs;
+    }
+    list.clear();
+    cout << "Priority Queue times: ";
+    for (unsigned i = 0; i < times_priority_q.size(); i++) {
+        cout << times_priority_q[i] << " ";
+        priority_q << times_priority_q[i] << " ";
+    }
+    priority_q << "\n";
+    cout << endl;
+    cout << "Quick Select times: ";
+    for (unsigned i = 0; i < times_quick_select.size(); i++) {
+        cout << times_quick_select[i] << " ";
+        quick_s << times_quick_select[i] << " ";
+    }
+    quick_s << "\n";
+    times_priority_q.clear();
+    times_quick_select.clear();
+    cout << endl;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 6" << endl;
+    cout << "* Random list with 7500 elements." << endl;
+    cout << "* The test is done 10 times." << endl;
+    cout << "***********************************/" << endl;
+    list = random_list( 7500 );
+    for (int i = 0; i < 10; i++) {
+        begin = clock();
+        q = new Priority_Queue(list);
+        end = clock();
+        time_priority_q = double( end-begin ) / CLOCKS_PER_SEC;
+        times_priority_q.push_back( time_priority_q );
+        begin = clock();
+        qs = new Quick_Select(list, 1);
+        end = clock();
+        time_quick_select = double( end-begin ) / CLOCKS_PER_SEC;
+        times_quick_select.push_back( time_quick_select );
+        delete q;
+        delete qs;
+    }
+    list.clear();
+    cout << "Priority Queue times: ";
+    for (unsigned i = 0; i < times_priority_q.size(); i++) {
+        cout << times_priority_q[i] << " ";
+        priority_q << times_priority_q[i] << " ";
+    }
+    priority_q << "\n";
+    cout << endl;
+    cout << "Quick Select times: ";
+    for (unsigned i = 0; i < times_quick_select.size(); i++) {
+        cout << times_quick_select[i] << " ";
+        quick_s << times_quick_select[i] << " ";
+    }
+    quick_s << "\n";
+    times_priority_q.clear();
+    times_quick_select.clear();
+    cout << endl;
+
+    cout << "/***********************************" << endl;
+    cout << "* TEST 7" << endl;
     cout << "* Random list with 10000 elements." << endl;
     cout << "* The test is done 10 times." << endl;
     cout << "***********************************/" << endl;

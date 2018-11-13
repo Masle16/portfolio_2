@@ -17,9 +17,10 @@ public:
 
 private:
     vector<int> p_queue = { -1 };
-
+    vector<int> list;
     void build_heap();
     void percolate_down(int node);
+    void make_list();
 };
 
 #endif // PRIORITY_QUEUE_H
