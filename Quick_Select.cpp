@@ -64,29 +64,16 @@ void Quick_Select::insertion_sort(vector<int> &v) {
 }
 
 int Quick_Select::median3(vector<int> v) {
-    int middle = v[ v.size()/2 ];
-    int left = v[ 0 ];
-    int right = v[ v.size()-1 ];
-
-    if(left <= right && left <= middle)
-    {
-        if(right <= middle)
-            return right;
-        else
-            return left;
-    }
-    if(right <= left && right <= middle)
-    {
-        if(left <= middle)
-            return left;
-        else
-            return middle;
-    }
-    if(middle <= left && middle <= right)
-    {
-        if(left <= right)
-            return left;
-        else
-            return right;
-    }
+    int x = v[ v.size()/2 ];
+    int y = v[ 0 ];
+    int z = v[ v.size()-1 ];
+    
+    if ( x <= y && y <= z )
+        return y;
+    
+    if ( y <= x && x <= z )
+        return x;
+    
+    if ( x <= z && z <= y )
+        return z;
 }
