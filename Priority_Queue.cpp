@@ -38,8 +38,8 @@ int Priority_Queue::delete_min() {
 void Priority_Queue::build_heap() {
     for (unsigned i = (p_queue.size()-1)/2; i > 0 ; i--) {
         percolate_down(i);
-        counter=0;
     }
+    counter=0;
 }
 
 void Priority_Queue::percolate_down(int node) {
