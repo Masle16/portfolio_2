@@ -12,12 +12,16 @@ public:
     Priority_Queue(vector<int> v);
     ~Priority_Queue();
 
+    void restart_counter();
+    int get_counter();
+
     void print_queue();
     int delete_min();
 
 private:
     vector<int> p_queue = { -1 };
     vector<int> list;
+    int counter = 0;
     void build_heap();
     void percolate_down(int node);
     void make_list();

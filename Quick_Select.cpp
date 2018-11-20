@@ -18,11 +18,18 @@ void Quick_Select::print() {
     cout << endl;
 }
 
+void Quick_Select::restart_counter() {
+    counter = 0;
+}
+
+int Quick_Select::get_counter() {
+    return counter;
+}
+
 // PRIVATE
 void Quick_Select::quick_select(vector<int> &v, int left, int right, int k) {
     if (left + 10 <= right ) {
-        int pivot = median3(v);
-
+        int pivot = median3(v, left, right);
         int i = left; int j = right;
         while (true) {
             while( v[++i] < pivot ) {}
@@ -30,6 +37,7 @@ void Quick_Select::quick_select(vector<int> &v, int left, int right, int k) {
 
             if ( i<j ) {
                 swap( v[i], v[j] );
+                counter++;
             }
             else {
                 break;
@@ -63,17 +71,18 @@ void Quick_Select::insertion_sort(vector<int> &v) {
     }
 }
 
-int Quick_Select::median3(vector<int> v) {
-    int x = v[ v.size()/2 ];
-    int y = v[ 0 ];
-    int z = v[ v.size()-1 ];
-    
-    if ( x <= y && y <= z )
-        return y;
-    
-    if ( y <= x && x <= z )
-        return x;
-    
-    if ( x <= z && z <= y )
-        return z;
+int Quick_Select::median3(vector<int> v, int left, int right) {
+    int center = ( left + right ) / 2;
+
+    if ( v[ center ] < v[ left ] )
+        swap( v[ left ], v[center] );
+
+    if ( v[ right ] < v[ left ] )
+        swap( v[ left ], v[ right ] );
+
+    if ( v[ right ] < v[ center ] )
+        swap( v[ center ], v[ right ] );
+
+    swap( v[ center ], v[ right-1 ] );
+    return v[ right-1 ];
 }
