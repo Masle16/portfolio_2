@@ -13,8 +13,8 @@ quick_s = importdata('quick_s.txt');
 % Theo vs pract prio queue
 figure('Name','Priority Queue');
 hold on
-prioPlot1 = plot((0:1:10000),priority_q()); Prio1 = "Priority Queue curve practical";
-prioPlot = plot((0:1:10000),prio(0:10000)); Prio = "Priority Queue curve theoretical";
+prioPlot1 = plot((0:100:10000),mean(priority_q())); Prio1 = "Priority Queue curve practical";
+prioPlot = plot((0:100:10000),prio(0:100:10000)); Prio = "Priority Queue curve theoretical";
 legend([prioPlot1,prioPlot], [Prio1, Prio]);
 ylabel('Operations');
 xlabel('List Length');
@@ -24,8 +24,8 @@ hold off
 % b = regress(quick_s',[ones(size((0:10000)')) (0:10000)']);
 figure('Name','Quick Select');
 hold on
-quickPlot1 = plot((0:1:10000),quick_s()); Quick1 = "Quick Select curve practical";
-quickPlot = plot((0:1:10000),quick(0:10000)); Quick = "Quick Select curve theoretical";
+quickPlot1 = plot((0:100:10000),mean(quick_s())); Quick1 = "Quick Select curve practical";
+quickPlot = plot((0:100:10000),quick(0:100:10000)); Quick = "Quick Select curve theoretical";
 % quickPlot1 = plot(quick_regress(0:2:10000)); Quick1 = "Quick Select curve practical";
 legend([quickPlot1,quickPlot], [Quick1, Quick]);
 ylabel('Operations');
