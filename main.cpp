@@ -47,7 +47,7 @@ int main() {
 
     ofstream quick_s;
     quick_s.open("quick_s.txt");
-    for (int j = 0; j < 10; j++) {
+    for (int j = 0; j < 1; j++) {
         for ( int i = 0; i <= 10000; i = i+100 ) {
             quick_s << quick_s_data( i ) << " ";
         }
