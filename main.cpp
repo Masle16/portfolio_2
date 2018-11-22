@@ -37,7 +37,7 @@ int quick_s_data( int l ) {
 int main() {
     ofstream priority_q;
     priority_q.open("priority_q.txt");
-    for (int j = 0; j < 10; j++) {
+    for (int j = 0; j < 100; j++) {
         for (int i = 0; i <= 10000; i = i+100) {
             priority_q << priority_q_data( i ) << " ";
         }
@@ -47,7 +47,7 @@ int main() {
 
     ofstream quick_s;
     quick_s.open("quick_s.txt");
-    for (int j = 0; j < 1; j++) {
+    for (int j = 0; j < 100; j++) {
         for ( int i = 0; i <= 10000; i = i+100 ) {
             quick_s << quick_s_data( i ) << " ";
         }
