@@ -37,14 +37,22 @@ int quick_s_data( int l ) {
 int main() {
     ofstream priority_q;
     priority_q.open("priority_q.txt");
-    for (int i = 0; i <= 10000; i++)
-        priority_q << priority_q_data( i ) << " ";
+    for (int j = 0; j < 10; j++) {
+        for (int i = 0; i <= 10000; i = i+100) {
+            priority_q << priority_q_data( i ) << " ";
+        }
+        priority_q << "\n";
+    }
     priority_q.close();
 
     ofstream quick_s;
     quick_s.open("quick_s.txt");
-    for ( int i = 0; i <= 10000; i++ )
-        quick_s << quick_s_data( i ) << " ";
+    for (int j = 0; j < 10; j++) {
+        for ( int i = 0; i <= 10000; i = i+100 ) {
+            quick_s << quick_s_data( i ) << " ";
+        }
+        quick_s << "\n";
+    }
     quick_s.close();
 
     return 0;
